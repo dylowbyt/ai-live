@@ -5,9 +5,13 @@ import { instructions } from "./personality.js";
 export async function askRealtime({ history, text, audioPcm, imageJpeg }) {
   return new Promise((resolve, reject) => {
     const ws = new WebSocket(
-      `wss://api.openai.com/v1/realtime?model=${encodeURIComponent(config.realtimeModel)}`,
-      { headers: { Authorization: `Bearer ${config.openaiKey}`, "OpenAI-Beta": "realtime=v1" } }
-    );
+  `wss://api.openai.com/v1/realtime?model=${encodeURIComponent(config.realtimeModel)}`,
+  {
+    headers: {
+      Authorization: `Bearer ${config.openaiKey}`
+    }
+  }
+);
 
     const audio = [];
     let done = false;
